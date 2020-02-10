@@ -8,6 +8,7 @@ import HomePage from "../components/HomePage";
 import MessagePage from "../components/MessagePage";
 import ContactPage from "../components/ContactPage";
 import Logout from "../components/Logout";
+import AllContactPage from "../components/AllContactsPage";
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -19,6 +20,7 @@ const AppRouter = () => (
 
         <Authenticated>
           <Route path="/contact" component={ContactPage} />
+          <Route path="/contacts" component={AllContactPage} />
           <Route path="/message" component={MessagePage} />
           <Route path="/account" component={Dashboard} />
           <Route path="/logout" component={Logout} />
