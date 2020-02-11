@@ -9,6 +9,8 @@ import MessagePage from "../components/MessagePage";
 import ContactPage from "../components/ContactPage";
 import Logout from "../components/Logout";
 import AllContactPage from "../components/AllContactsPage";
+import AllMessagePage from "../components/AllMessagePage";
+import MessageOnePage from "../components/MessageOnePage";
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -22,6 +24,8 @@ const AppRouter = () => (
           <Route path="/contact" component={ContactPage} />
           <Route path="/contacts" component={AllContactPage} />
           <Route path="/message" component={MessagePage} />
+          <Route path="/onemessage" component={MessageOnePage} />
+          <Route path="/messages" component={AllMessagePage} />
           <Route path="/account" component={Dashboard} />
           <Route path="/logout" component={Logout} />
         </Authenticated>
