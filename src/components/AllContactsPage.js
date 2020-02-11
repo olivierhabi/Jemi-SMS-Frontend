@@ -1,42 +1,53 @@
 import React, { useState, useEffect } from "react";
 import API from "./Api";
-import { O2A } from "object-to-array-convert";
-import { useHistory } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState([]);
   const [message, setMessage] = useState("");
-  const history = useHistory();
+
+  const deleteContact = async id => {
+    await API.delete(`/contact/${id}`, options)
+      .then(res => {
+        setMessage(res.data.message);
+        fetchData();
+      })
+      .catch(err => console.log(err));
+  };
 
   const token = localStorage.getItem("auth-token");
   const options = {
     headers: { Authorization: token }
   };
-
-  useEffect(() => {
+  const fetchData = async () => {
     let mounted = true;
-    const fetchData = async () => {
-      await API.get("/contact", options)
-        .then(res => {
-          if (mounted) {
-            setData(res.data.contactData);
-          }
-        })
-        .catch(err => console.log(err));
-    };
+    await API.get("/contact", options)
+      .then(res => {
+        if (mounted) {
+          setData(res.data.contactData);
+        }
+      })
+      .catch(err => console.log(err));
+  };
+
+  useEffect(mounted => {
     fetchData();
     return () => {
       mounted = false;
     };
-  }, [history]);
-  const deleteContact = async id => {
-    await API.delete(`/contact/${id}`, options)
-      .then(res => {
-        setMessage(res.data.message);
+  }, []);
 
-        console.log(data);
-      })
-      .catch(err => console.log(err));
+  const ContactData = ({ contact, deleteContact }) => {
+    return (
+      <div>
+        <li key={contact.id}>
+          {contact.name}, {contact.phone}
+          <button onClick={() => deleteContact(contact.id)}> Remove</button>
+        </li>
+      </div>
+    );
+  };
+  const refreshPage = () => {
+    window.location.reload();
   };
 
   return (
@@ -45,14 +56,14 @@ function App() {
       <p>{message}</p>
       <ul>
         {data.map(contact => (
-          <div>
-            <li key={contact.id}>
-              {contact.name}, {contact.phone}{" "}
-              <button onClick={() => deleteContact(contact.id)}> Remove</button>
-            </li>
-          </div>
+          <ContactData
+            key={contact.id}
+            contact={contact}
+            deleteContact={deleteContact}
+          />
         ))}
         <button>Remove selected</button>
+        <button onClick={() => refreshPage()}>Refresh</button>
       </ul>
     </div>
   );
