@@ -1,0 +1,225 @@
+@font-face {
+  font-family: "DIN Web";
+  src: url(../fonts/d-din/D-DINExp.otf);
+  font-style: normal;
+  margin: auto;
+}
+
+.navbar-light .navbar-brand {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  font-size: 22px;
+}
+#menu {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  font-size: 16px;
+}
+#footer {
+  background-color: #040d14 !important;
+  border-bottom: 1px solid;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+.display-4 {
+  color: rgb(4, 13, 20);
+  font-weight: bold;
+  font-size: 2px;
+  font-family: "DIN Web", sans-serif;
+}
+#copyright {
+  color: #21ce99;
+}
+#copyright:hover {
+  color: rgb(24, 86, 62);
+}
+.h5,
+h5 {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+.nav-link {
+  color: #21ce99;
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+.nav-link:hover {
+  color: rgb(24, 86, 62);
+}
+#navbar {
+  border-bottom: 1px solid;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+#signup {
+  background-color: #21ce99;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: rgb(4, 13, 20);
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+}
+#mobile-image {
+  padding-top: 120px;
+  width: 420px;
+}
+#container {
+  padding-top: 120px;
+  color: #ffffff;
+}
+#signup:hover {
+  order: none;
+  text-decoration: none;
+  color: #ffffff;
+}
+#signin {
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: #040d14;
+  font-weight: bold;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+  font-family: "DIN Web", sans-serif;
+}
+#signin:hover {
+  order: none;
+  text-decoration: none;
+
+  color: rgb(24, 86, 62);
+}
+#login {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin: 50px;
+}
+#signup-form {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin: 50px;
+}
+#email {
+  width: 400px;
+  height: 48px;
+  // border-color: red;
+  // box-shadow: 0 0 10px rebeccapurple;
+}
+#email:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#password {
+  width: 400px;
+  height: 48px;
+}
+#password:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#emailinput {
+  margin-bottom: 20px;
+  margin-left: 5px;
+}
+#signuplink {
+  padding-top: 25px;
+}
+#signup-word {
+  padding-top: 25px;
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+.modal-header {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  margin-left: 30px;
+}
+#signup-btn {
+  background-color: #21ce99;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: rgb(4, 13, 20);
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+  margin-top: 30px;
+}
+#signuplink {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+#password-label {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+#email-label {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+#signup-link {
+  color: #21ce99;
+}
+#login-link {
+  color: #21ce99;
+}
+#error-message {
+  text-align: inline;
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+  margin-right: 10px;
+}
+#username-input {
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+#username {
+  width: 400px;
+  height: 48px;
+}
+#username:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#password-input {
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+#phone-input {
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+#phone {
+  width: 400px;
+  height: 48px;
+}
+#phone:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#username-label {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+#phone-label {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}

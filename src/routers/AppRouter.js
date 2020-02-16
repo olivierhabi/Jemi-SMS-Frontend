@@ -8,24 +8,46 @@ import HomePage from "../components/HomePage";
 import MessagePage from "../components/MessagePage";
 import ContactPage from "../components/ContactPage";
 import Logout from "../components/Logout";
+import AllContactPage from "../components/AllContactsPage";
+import AllMessagePage from "../components/AllMessagePage";
+import MessageOnePage from "../components/MessageOnePage";
+import FooterPage from "../components/FooterPage";
+import NavSidebar from "../components/NavSidebar";
+import NavTopDashboard from "../components/NavTopDashboard";
 
-const AppRouter = () => (
-  <BrowserRouter>
-    <div>
-      <Switch>
-        <Route path="/" component={HomePage} exact={true} />
-        <Route path="/signup" component={SignupForm} exact={true} />
-        <Route path="/signin" component={LoginForm} />
+const AppRouter = () => {
+  return (
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route path="/" component={HomePage} exact={true} />
+          <Route path="/signup" component={SignupForm} exact={true} />
+          <Route path="/signin" component={LoginForm} />
 
-        <Authenticated>
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/message" component={MessagePage} />
-          <Route path="/account" component={Dashboard} />
-          <Route path="/logout" component={Logout} />
-        </Authenticated>
-      </Switch>
-    </div>
-  </BrowserRouter>
-);
+          <body>
+            <div class="wrapper">
+              <NavSidebar />
+              <div class="main">
+                <NavTopDashboard />
+                <main>
+                  <Authenticated>
+                    <Route path="/contact" component={ContactPage} />
+                    <Route path="/contacts" component={AllContactPage} />
+                    <Route path="/message" component={MessagePage} />
+                    <Route path="/onemessage" component={MessageOnePage} />
+                    <Route path="/messages" component={AllMessagePage} />
+                    <Route path="/account" component={Dashboard} />
+                    <Route path="/logout" component={Logout} />
+                  </Authenticated>
+                </main>
+                <FooterPage />
+              </div>
+            </div>
+          </body>
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default AppRouter;
