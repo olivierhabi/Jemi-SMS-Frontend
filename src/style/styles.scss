@@ -145,6 +145,12 @@ h5 {
   font-family: "DIN Web", sans-serif;
   margin-left: 30px;
 }
+#login-header {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  margin-left: 30px;
+  padding-bottom: 30px;
+}
 #signup-btn {
   background-color: #21ce99;
   margin-left: 4px;
@@ -173,6 +179,7 @@ h5 {
 }
 #signup-link {
   color: #21ce99;
+  padding: 3px;
 }
 #login-link {
   color: #21ce99;
@@ -222,4 +229,261 @@ h5 {
 #phone-label {
   font-weight: bold;
   font-family: "DIN Web", sans-serif;
+}
+#card-body {
+  padding: 5px;
+}
+.sidebar-link {
+  background: #ffffff;
+}
+.sidebar-link:hover {
+  background: #ffffff;
+  opacity: 1.5;
+}
+.align-middle {
+  color: black;
+  font-family: "DIN Web", sans-serif;
+  text-decoration: none;
+}
+#active-hover:hover {
+  color: black;
+  opacity: 0.8;
+}
+.is-active {
+  color: black;
+  font-family: "DIN Web", sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+#favicon {
+  margin-right: 8px;
+}
+#sidebar-title {
+  font-size: 14px;
+  color: black;
+  opacity: 0.5;
+  font-family: "DIN Web", sans-serif;
+}
+
+#sender {
+  width: 300px;
+  height: 38px;
+}
+#sender:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#contact {
+  width: 260px;
+  height: 38px;
+}
+#contact:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#message {
+  width: 300px;
+  height: 108px;
+}
+#message:focus {
+  outline: none !important;
+  border-color: #21ce99;
+  box-shadow: none;
+}
+.dropzone {
+  position: relative;
+  width: 360px;
+  height: 100px;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+}
+
+#import-content {
+  align-items: center;
+}
+#locationlist {
+  background-color: white !important;
+}
+#PanelLocationFinderContent {
+  background-color: red;
+}
+#index-number {
+  font-size: 14px;
+  color: black;
+  margin: 12px;
+  font-family: "DIN Web", sans-serif;
+}
+.sender {
+  width: 300px;
+  height: 38px;
+}
+.sender:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#form-sender-card {
+  max-width: 400px;
+}
+#import-card {
+  max-width: 400px;
+}
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1280px) and (max-width: 1680px) {
+  .dropzone {
+    width: 360px;
+  }
+  #import-card {
+    max-width: 400px;
+  }
+}
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .dropzone {
+    width: 400px;
+  }
+  #import-card {
+    max-width: 400px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #form-sender-card {
+    max-width: 300px;
+  }
+  .dropzone {
+    width: 360px;
+  }
+  #contact {
+    width: 230px;
+    height: 38px;
+  }
+  #sender {
+    width: 230px;
+  }
+  #message {
+    width: 230px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #form-sender-card {
+    max-width: 300px;
+  }
+  #import-card {
+    max-width: 400px;
+  }
+  .dropzone {
+    width: 360px;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #form-sender-card {
+    max-width: 300px;
+  }
+  #sender {
+    width: 230px;
+  }
+  #message {
+    width: 230px;
+  }
+  .dropzone {
+    width: 360px;
+  }
+  #contact {
+    width: 230px;
+    height: 38px;
+  }
+  #import-card {
+    max-width: 400px;
+  }
+}
+#message-row {
+  margin: 2px;
+}
+
+@media (min-width: 411px) and (max-width: 481px) {
+  .dropzone {
+    width: 320px;
+  }
+  #contact {
+    width: 220px;
+    height: 38px;
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 360px) and (max-width: 411px) {
+  .dropzone {
+    width: 260px;
+  }
+  #sender {
+    width: 260px;
+  }
+  #message {
+    width: 260px;
+  }
+  #contact {
+    width: 10px;
+    height: 38px;
+  }
+}
+@media (min-width: 340px) and (max-width: 360px) {
+  #contact {
+    width: 180px;
+    height: 38px;
+  }
+  #sender {
+    width: 240px;
+  }
+  #message {
+    width: 240px;
+  }
+  .dropzone {
+    width: 240px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 340px) {
+  .dropzone {
+    width: 210px;
+  }
+  #sender {
+    width: 200px;
+  }
+  #message {
+    width: 200px;
+  }
+  #contact {
+    width: 140px;
+    height: 38px;
+  }
 }

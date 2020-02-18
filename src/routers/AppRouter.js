@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import SignupForm from "../components/SignupForm";
+import SignupFormPage from "../components/SignupFormPage";
 import LoginForm from "../components/LoginForm";
 import Dashboard from "../components/Dashboard";
 import Authenticated from "../components/Authenticated";
@@ -21,7 +21,7 @@ const AppRouter = () => {
       <div>
         <Switch>
           <Route path="/" component={HomePage} exact={true} />
-          <Route path="/signup" component={SignupForm} exact={true} />
+          <Route path="/signup" component={SignupFormPage} exact={true} />
           <Route path="/signin" component={LoginForm} />
 
           <body>
