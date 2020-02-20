@@ -383,7 +383,31 @@ h5 {
   text-align: center;
   margin-top: 25px;
 }
-
+#phone-one {
+  width: 300px;
+  height: 45px;
+}
+#phone-one:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#sender-one {
+  width: 300px;
+  height: 45px;
+}
+#sender-one:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#message-one {
+  width: 300px;
+  height: 108px;
+}
+#message-one:focus {
+  outline: none !important;
+  border-color: #21ce99;
+  box-shadow: none;
+}
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops

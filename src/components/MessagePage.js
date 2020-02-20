@@ -6,6 +6,7 @@ import {
   faFileImport,
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
+import MessageOnePage from "./MessageOnePage";
 
 const MessagePage = () => {
   const [state, setState] = useState({
@@ -90,14 +91,8 @@ const MessagePage = () => {
         </h1>
         <div id="message-row">
           <div class="card">
-            <button
-              align="left"
-              id="one-message-btn"
-              class="btn btn-outline-light"
-              type="submit"
-            >
-              Single
-            </button>
+            <MessageOnePage />
+
             <div id="signup-form">
               <div class="media">
                 <div class="media-body">
