@@ -108,7 +108,20 @@ h5 {
 #signup-form {
   flex-direction: column;
   margin-bottom: 60px;
-  margin: 50px;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#remove-icon {
+  color: #21ce99;
+}
+#message-view {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  border-top: 2px solid;
 }
 #email {
   width: 400px;
@@ -164,6 +177,25 @@ h5 {
   width: 100px;
   padding: 10px;
   margin-top: 30px;
+}
+#one-message-btn {
+  background-color: #21ce99;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: rgb(4, 13, 20);
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+  margin-top: 30px;
+  position: absolute;
+  right: 32px;
+}
+#check-box {
+  padding: 300px;
 }
 #signuplink {
   font-weight: bold;
@@ -266,7 +298,7 @@ h5 {
 }
 
 #sender {
-  width: 300px;
+  width: 1000px;
   height: 38px;
 }
 #sender:focus {
@@ -282,7 +314,7 @@ h5 {
   box-shadow: none;
 }
 #message {
-  width: 300px;
+  width: 1000px;
   height: 108px;
 }
 #message:focus {
@@ -292,12 +324,17 @@ h5 {
 }
 .dropzone {
   position: relative;
-  width: 360px;
+  width: 1000px;
   height: 100px;
   border-width: 2px;
   border-color: rgb(102, 102, 102);
   border-style: dashed;
   border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 60px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAPUlEQVQoU43PQQoAMAgDweT/j7ZYUGoRo+dhicTujAtnAKjgRR6bYCIFy6quWEqh1casvrAt/cURxTMSOTyKNQgKOBqKWwAAAABJRU5ErkJggg==
+)
+    repeat;
 }
 
 #import-content {
@@ -305,6 +342,7 @@ h5 {
 }
 #locationlist {
   background-color: white !important;
+  width: 980px;
 }
 #PanelLocationFinderContent {
   background-color: red;
@@ -319,16 +357,33 @@ h5 {
   width: 300px;
   height: 38px;
 }
-.sender:focus {
-  border-color: #21ce99;
-  box-shadow: none;
-}
+// .sender:focus {
+//   border-color: #21ce99;
+//   box-shadow: none;
+// }
 #form-sender-card {
   max-width: 400px;
+  margin-left: 2px;
 }
 #import-card {
   max-width: 400px;
 }
+#header-h1 {
+  font-size: 25px;
+  color: black;
+  font-family: "DIN Web", sans-serif;
+}
+#datatables-basic {
+  width: 100%;
+}
+#import-contact {
+  font-size: 25px;
+  color: black;
+  font-family: "DIN Web", sans-serif;
+  text-align: center;
+  margin-top: 25px;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -341,18 +396,50 @@ h5 {
   #import-card {
     max-width: 400px;
   }
+  .dropzone {
+    width: 730px;
+  }
+
+  #sender {
+    width: 730px;
+  }
+  #message {
+    width: 730px;
+  }
+  #signup-form {
+    margin-left: 240px;
+    margin-right: 240px;
+  }
+  #contact {
+    width: 550px;
+    height: 38px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 720px;
+  }
 }
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
 
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .dropzone {
-    width: 400px;
-  }
+@media (min-width: 1024px) and (max-width: 1280px) {
   #import-card {
     max-width: 400px;
+  }
+  .dropzone {
+    width: 540px;
+  }
+  #contact {
+    width: 460px;
+    height: 38px;
+  }
+  #sender {
+    width: 540px;
+  }
+  #message {
+    width: 540px;
   }
 }
 
@@ -366,17 +453,21 @@ h5 {
     max-width: 300px;
   }
   .dropzone {
-    width: 360px;
+    width: 540px;
   }
   #contact {
-    width: 230px;
+    width: 400px;
     height: 38px;
   }
   #sender {
-    width: 230px;
+    width: 540px;
   }
   #message {
-    width: 230px;
+    width: 540px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 520px;
   }
 }
 
@@ -392,9 +483,9 @@ h5 {
   #import-card {
     max-width: 400px;
   }
-  .dropzone {
-    width: 360px;
-  }
+  // .dropzone {
+  //   width: 360px;
+  // }
 }
 
 /* 
@@ -407,16 +498,16 @@ h5 {
     max-width: 300px;
   }
   #sender {
-    width: 230px;
+    width: 520px;
   }
   #message {
-    width: 230px;
+    width: 520px;
   }
   .dropzone {
-    width: 360px;
+    width: 520px;
   }
   #contact {
-    width: 230px;
+    width: 400px;
     height: 38px;
   }
   #import-card {
@@ -429,11 +520,26 @@ h5 {
 
 @media (min-width: 411px) and (max-width: 481px) {
   .dropzone {
-    width: 320px;
+    width: 300px;
   }
   #contact {
-    width: 220px;
+    width: 240px;
     height: 38px;
+  }
+  #sender {
+    width: 300px;
+  }
+  #message {
+    width: 300px;
+  }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 300px;
   }
 }
 
@@ -452,8 +558,17 @@ h5 {
     width: 260px;
   }
   #contact {
-    width: 10px;
+    width: 200px;
     height: 38px;
+  }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 260px;
   }
 }
 @media (min-width: 340px) and (max-width: 360px) {
@@ -470,6 +585,11 @@ h5 {
   .dropzone {
     width: 240px;
   }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 340px) {
@@ -485,5 +605,15 @@ h5 {
   #contact {
     width: 140px;
     height: 38px;
+  }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  #message-view {
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 12px;
   }
 }
