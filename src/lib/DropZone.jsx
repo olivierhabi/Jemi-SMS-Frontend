@@ -53,6 +53,10 @@ export default class ModifiedDropZone extends Component {
 
   render() {
     const { children } = this.props;
-    return <Dropzone onDrop={this.onDrop}>{children}</Dropzone>;
+    return (
+      <Dropzone className="dropzone" multiple={false} onDrop={this.onDrop}>
+        {children}
+      </Dropzone>
+    );
   }
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "./Api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 function AllMessagePage() {
   const [data, setData] = useState([]);
@@ -30,12 +32,25 @@ function AllMessagePage() {
 
   const MessageData = ({ message, deleteMessage }) => {
     return (
-      <div>
-        <li key={message.id}>
-          {message.phone},{message.sender}, {message.message},
-          <button onClick={() => deleteMessage(message.id)}> Remove</button>
-        </li>
-      </div>
+      <tr>
+        <td>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" />
+            <span class="custom-control-label"></span>
+          </label>
+        </td>
+        <td>{message.phone}</td>
+        <div id="hide-class">
+          <td>{message.sender}</td>
+          <td>{message.message}</td>
+        </div>
+        <td>
+          <a id="remove-icon" onClick={() => deleteMessage(message.id)}>
+            {" "}
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </a>
+        </td>
+      </tr>
     );
   };
 
@@ -54,20 +69,45 @@ function AllMessagePage() {
   };
 
   return (
-    <div>
-      <h1> My Sent Message</h1>
-      <p>{message}</p>
-      <li>
-        {data.map(message => (
-          <MessageData
-            key={message.id}
-            message={message}
-            deleteMessage={deleteMessage}
-          />
-        ))}
-      </li>
-      <button onClick={() => refreshPage()}>Refresh</button>
-    </div>
+    <main class="content">
+      <div class="container-fluid p-0">
+        <h1 id="header-h1" class="h3 mb-3">
+          Sent Messages
+        </h1>
+        <div id="message-row">
+          <div class="row">
+            <div class="card">
+              <div id="message-view">
+                <div class="card-body">
+                  <table id="datatables-basic" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Select</th>
+                        <th>Phone</th>
+                        <div id="hide-class">
+                          <th>Sender</th>
+                          <th>Message</th>
+                        </div>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.map(message => (
+                        <MessageData
+                          key={message.id}
+                          message={message}
+                          deleteMessage={deleteMessage}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
 

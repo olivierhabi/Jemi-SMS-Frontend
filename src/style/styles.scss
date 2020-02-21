@@ -108,7 +108,27 @@ h5 {
 #signup-form {
   flex-direction: column;
   margin-bottom: 60px;
-  margin: 50px;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#one-message-form {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#remove-icon {
+  color: #21ce99;
+}
+#message-view {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  margin-left: 70px;
+  margin-right: 400px;
+  border-top: 2px solid;
 }
 #email {
   width: 400px;
@@ -145,6 +165,12 @@ h5 {
   font-family: "DIN Web", sans-serif;
   margin-left: 30px;
 }
+#login-header {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  margin-left: 30px;
+  padding-bottom: 30px;
+}
 #signup-btn {
   background-color: #21ce99;
   margin-left: 4px;
@@ -158,6 +184,44 @@ h5 {
   width: 100px;
   padding: 10px;
   margin-top: 30px;
+}
+#one-message-btn {
+  background-color: #21ce99;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: rgb(4, 13, 20);
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+  margin-top: 30px;
+  position: absolute;
+  right: 32px;
+}
+#logout-btn {
+  background-color: #21ce99;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: rgb(4, 13, 20);
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+  position: absolute;
+  right: 32px;
+  color: red;
+}
+#logout-btn a {
+  color: white;
+}
+#check-box {
+  padding: 300px;
 }
 #signuplink {
   font-weight: bold;
@@ -173,6 +237,7 @@ h5 {
 }
 #signup-link {
   color: #21ce99;
+  padding: 3px;
 }
 #login-link {
   color: #21ce99;
@@ -222,4 +287,457 @@ h5 {
 #phone-label {
   font-weight: bold;
   font-family: "DIN Web", sans-serif;
+}
+#card-body {
+  padding: 5px;
+}
+.sidebar-link {
+  background: #ffffff;
+}
+.sidebar-link:hover {
+  background: #ffffff;
+  opacity: 1.5;
+}
+.align-middle {
+  color: black;
+  font-family: "DIN Web", sans-serif;
+  text-decoration: none;
+}
+#active-hover:hover {
+  color: black;
+  opacity: 0.8;
+}
+.is-active {
+  color: black;
+  font-family: "DIN Web", sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+#favicon {
+  margin-right: 8px;
+}
+#sidebar-title {
+  font-size: 14px;
+  color: black;
+  opacity: 0.5;
+  font-family: "DIN Web", sans-serif;
+}
+
+#sender {
+  width: 1000px;
+  height: 38px;
+}
+#sender:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#contact {
+  width: 260px;
+  height: 38px;
+}
+#contact:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#contact-save {
+  width: 260px;
+  height: 38px;
+}
+#contact-save:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#message {
+  width: 1000px;
+  height: 108px;
+}
+#message:focus {
+  outline: none !important;
+  border-color: #21ce99;
+  box-shadow: none;
+}
+.dropzone {
+  position: relative;
+  width: 1000px;
+  height: 100px;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 60px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAPUlEQVQoU43PQQoAMAgDweT/j7ZYUGoRo+dhicTujAtnAKjgRR6bYCIFy6quWEqh1casvrAt/cURxTMSOTyKNQgKOBqKWwAAAABJRU5ErkJggg==
+)
+    repeat;
+}
+
+#import-content {
+  align-items: center;
+}
+#locationlist {
+  background-color: white !important;
+  width: 980px;
+}
+#PanelLocationFinderContent {
+  background-color: red;
+}
+#index-number {
+  font-size: 14px;
+  color: black;
+  margin: 12px;
+  font-family: "DIN Web", sans-serif;
+}
+.sender {
+  width: 300px;
+  height: 38px;
+}
+// .sender:focus {
+//   border-color: #21ce99;
+//   box-shadow: none;
+// }
+#form-sender-card {
+  max-width: 400px;
+  margin-left: 2px;
+}
+#import-card {
+  max-width: 400px;
+}
+#header-h1 {
+  font-size: 25px;
+  color: black;
+  font-family: "DIN Web", sans-serif;
+}
+#datatables-basic {
+  width: 100%;
+}
+#import-contact {
+  font-size: 25px;
+  color: black;
+  font-family: "DIN Web", sans-serif;
+  text-align: center;
+  margin-top: 25px;
+}
+#phone-one {
+  width: 300px;
+  height: 45px;
+}
+#phone-one:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#sender-one {
+  width: 300px;
+  height: 45px;
+}
+#sender-one:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+#message-one {
+  width: 300px;
+  height: 108px;
+}
+#message-one:focus {
+  outline: none !important;
+  border-color: #21ce99;
+  box-shadow: none;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1280px) and (max-width: 1680px) {
+  .dropzone {
+    width: 360px;
+  }
+  #import-card {
+    max-width: 400px;
+  }
+  .dropzone {
+    width: 730px;
+  }
+
+  #sender {
+    width: 730px;
+  }
+  #message {
+    width: 730px;
+  }
+  #signup-form {
+    margin-left: 240px;
+    margin-right: 240px;
+  }
+  #contact {
+    width: 550px;
+    height: 38px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 720px;
+  }
+  #message-view {
+    flex-direction: column;
+    margin-left: 40px;
+  }
+}
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  #import-card {
+    max-width: 400px;
+  }
+  .dropzone {
+    width: 540px;
+  }
+  #contact {
+    width: 460px;
+    height: 38px;
+  }
+  #sender {
+    width: 540px;
+  }
+  #message {
+    width: 540px;
+  }
+  #message-view {
+    flex-direction: column;
+    margin-left: 40px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #form-sender-card {
+    max-width: 300px;
+  }
+  .dropzone {
+    width: 540px;
+  }
+  #contact {
+    width: 400px;
+    height: 38px;
+  }
+  #sender {
+    width: 540px;
+  }
+  #message {
+    width: 540px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 520px;
+  }
+  #message-view {
+    flex-direction: column;
+    margin-left: 40px;
+  }
+  #contact-save {
+    width: 220px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #form-sender-card {
+    max-width: 300px;
+  }
+  #import-card {
+    max-width: 400px;
+  }
+
+  // .dropzone {
+  //   width: 360px;
+  // }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #form-sender-card {
+    max-width: 300px;
+  }
+  #sender {
+    width: 520px;
+  }
+  #message {
+    width: 520px;
+  }
+  .dropzone {
+    width: 520px;
+  }
+  #contact {
+    width: 400px;
+    height: 38px;
+  }
+  #import-card {
+    max-width: 400px;
+  }
+  #message-view {
+    flex-direction: column;
+    margin-left: 40px;
+  }
+  #contact-save {
+    width: 220px;
+  }
+}
+#message-row {
+  margin: 2px;
+}
+
+@media (min-width: 411px) and (max-width: 481px) {
+  .dropzone {
+    width: 300px;
+  }
+  #contact {
+    width: 240px;
+    height: 38px;
+  }
+  #sender {
+    width: 300px;
+  }
+  #message {
+    width: 300px;
+  }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 300px;
+    padding-left: 2px;
+  }
+  #hide-class {
+    display: none;
+  }
+  #message-view {
+    flex-direction: column;
+    margin-left: 40px;
+  }
+  #contact-save {
+    width: 120px;
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 360px) and (max-width: 411px) {
+  .dropzone {
+    width: 260px;
+  }
+  #sender {
+    width: 260px;
+  }
+  #message {
+    width: 260px;
+  }
+  #contact {
+    width: 200px;
+    height: 38px;
+  }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  #locationlist {
+    background-color: white !important;
+    width: 260px;
+    padding-left: 2px;
+  }
+  #hide-class {
+    display: none;
+  }
+  #message-view {
+    flex-direction: column;
+    margin-left: 40px;
+  }
+  #contact-save {
+    width: 100px;
+  }
+}
+@media (min-width: 340px) and (max-width: 360px) {
+  #contact {
+    width: 180px;
+    height: 38px;
+  }
+  #sender {
+    width: 240px;
+  }
+  #message {
+    width: 240px;
+  }
+  .dropzone {
+    width: 240px;
+  }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  #hide-class {
+    display: none;
+  }
+  #contact-save {
+    width: 100px;
+  }
+  #locationlist {
+    padding-left: 2px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 340px) {
+  .dropzone {
+    width: 210px;
+  }
+  #sender {
+    width: 200px;
+  }
+  #message {
+    width: 200px;
+  }
+  #contact {
+    width: 140px;
+    height: 38px;
+  }
+  #signup-form {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  #message-view {
+    flex-direction: column;
+    margin-left: 1px;
+    margin-right: 400px;
+  }
+  #hide-class {
+    display: none;
+  }
+  #contact-save {
+    width: 80px;
+    height: 38px;
+  }
+  #locationlist {
+    width: 220px;
+    padding-left: 2px;
+  }
 }

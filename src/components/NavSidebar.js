@@ -1,4 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faInbox,
+  faAddressBook,
+  faIdCardAlt,
+  faUser,
+  faHistory,
+  faUsers
+} from "@fortawesome/free-solid-svg-icons";
 
 const NavSidebar = () => (
   <nav id="sidebar" class="sidebar">
@@ -9,46 +20,112 @@ const NavSidebar = () => (
       </a>
 
       <ul class="sidebar-nav">
-        <li class="sidebar-item active">
-          <a href="#dashboards" class="sidebar-link">
-            <i class="align-middle" data-feather="sliders"></i>{" "}
-            <span class="align-middle">
-              <button>+ Compose</button>
-            </span>
-          </a>
-        </li>
-        <li class="sidebar-header">My Account</li>
-        <li class="sidebar-item active">
-          <a href="#dashboards" class="sidebar-link">
-            <i class="align-middle" data-feather="sliders"></i>{" "}
-            <span class="align-middle">Account</span>
-          </a>
+        <li id="sidebar-title" class="sidebar-header">
+          Messages
         </li>
         <li class="sidebar-item active">
-          <a href="#dashboards" class="sidebar-link">
-            <i class="align-middle" data-feather="sliders"></i>{" "}
-            <span class="align-middle">History</span>
-          </a>
+          <span class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/message"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faEnvelope} />+ Messages
+            </NavLink>
+          </span>
         </li>
-        <li class="sidebar-header">Contacts and Groups</li>
+
         <li class="sidebar-item active">
-          <a href="#dashboards" class="sidebar-link">
-            <i class="align-middle" data-feather="sliders"></i>{" "}
-            <span class="align-middle">Contacts</span>
-          </a>
+          <span class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/messages"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faInbox} />
+              Sent
+            </NavLink>
+          </span>
+        </li>
+        <li id="sidebar-title" class="sidebar-header">
+          My Account
         </li>
         <li class="sidebar-item active">
-          <a href="#dashboards" class="sidebar-link">
-            <i class="align-middle" data-feather="sliders"></i>{" "}
-            <span class="align-middle">Groups</span>
-          </a>
+          <span class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/contact"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faUser} />
+              Account
+            </NavLink>
+          </span>
         </li>
-        <li class="sidebar-header">Messages</li>
         <li class="sidebar-item active">
-          <a href="#dashboards" class="sidebar-link">
-            <i class="align-middle" data-feather="sliders"></i>{" "}
-            <span class="align-middle">Sent</span>
-          </a>
+          <span class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/contact"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faHistory} />
+              History
+            </NavLink>
+          </span>
+        </li>
+        <li id="sidebar-title" class="sidebar-header">
+          Contacts and Groups
+        </li>
+        <li class="sidebar-item active">
+          <span class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/contact"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faAddressBook} />
+              Contacts
+            </NavLink>
+          </span>
+        </li>
+        <li class="sidebar-item active">
+          <span id="align-active" class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/contacts"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faIdCardAlt} />
+              Saved Contacts
+            </NavLink>
+          </span>
+        </li>
+        <li class="sidebar-item">
+          <span class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/contacts"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faUsers} />
+              Groups
+            </NavLink>
+          </span>
         </li>
       </ul>
 

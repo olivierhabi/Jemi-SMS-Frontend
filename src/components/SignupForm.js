@@ -139,7 +139,7 @@ const SignupForm = props => {
               Sign Up
             </button>
             <p id="signup-word">
-              Have an account <ModalLogin onClick={() => handleClose()} />
+              Have an account
               <NavLink id="signup-link" to="/signin">
                 Login
               </NavLink>{" "}
