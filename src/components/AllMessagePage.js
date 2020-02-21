@@ -40,8 +40,10 @@ function AllMessagePage() {
           </label>
         </td>
         <td>{message.phone}</td>
-        <td>{message.sender}</td>
-        <td>{message.message}</td>
+        <div id="hide-class">
+          <td>{message.sender}</td>
+          <td>{message.message}</td>
+        </div>
         <td>
           <a id="remove-icon" onClick={() => deleteMessage(message.id)}>
             {" "}
@@ -82,8 +84,10 @@ function AllMessagePage() {
                       <tr>
                         <th>Select</th>
                         <th>Phone</th>
-                        <th>Sender</th>
-                        <th>Message</th>
+                        <div id="hide-class">
+                          <th>Sender</th>
+                          <th>Message</th>
+                        </div>
                         <th>Action</th>
                       </tr>
                     </thead>

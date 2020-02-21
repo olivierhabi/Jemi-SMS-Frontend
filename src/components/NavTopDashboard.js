@@ -9,7 +9,12 @@ const NavTopDashboard = () => (
     <div class="navbar-collapse collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <button>
+          <button
+            align="left"
+            id="logout-btn"
+            class="btn btn-outline-light"
+            type="submit"
+          >
             <NavLink to="/logout" activeClassName="is-active" exact={true}>
               Logout
             </NavLink>

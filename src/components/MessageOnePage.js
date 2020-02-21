@@ -82,10 +82,10 @@ const MessagePage = () => {
           <Modal.Title>Single Message</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div id="signup-form">
+          <div id="one-message-form">
             <form onSubmit={sendMessage} class="needs-validation">
               <div class="form-row">
-                <div id="username-input">
+                <div id="">
                   <label id="username-label" for="usrename">
                     Phone
                   </label>
@@ -99,7 +99,7 @@ const MessagePage = () => {
                     required
                   />
                 </div>
-                <div id="username-input">
+                <div id="">
                   <label id="username-label" for="usrename">
                     Sender
                   </label>
