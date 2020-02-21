@@ -339,6 +339,14 @@ h5 {
   border-color: #21ce99;
   box-shadow: none;
 }
+#contact-save {
+  width: 260px;
+  height: 38px;
+}
+#contact-save:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
 #message {
   width: 1000px;
   height: 108px;
@@ -532,6 +540,9 @@ h5 {
     flex-direction: column;
     margin-left: 40px;
   }
+  #contact-save {
+    width: 220px;
+  }
 }
 
 /* 
@@ -581,6 +592,9 @@ h5 {
     flex-direction: column;
     margin-left: 40px;
   }
+  #contact-save {
+    width: 220px;
+  }
 }
 #message-row {
   margin: 2px;
@@ -608,6 +622,7 @@ h5 {
   #locationlist {
     background-color: white !important;
     width: 300px;
+    padding-left: 2px;
   }
   #hide-class {
     display: none;
@@ -615,6 +630,9 @@ h5 {
   #message-view {
     flex-direction: column;
     margin-left: 40px;
+  }
+  #contact-save {
+    width: 120px;
   }
 }
 
@@ -644,6 +662,7 @@ h5 {
   #locationlist {
     background-color: white !important;
     width: 260px;
+    padding-left: 2px;
   }
   #hide-class {
     display: none;
@@ -651,6 +670,9 @@ h5 {
   #message-view {
     flex-direction: column;
     margin-left: 40px;
+  }
+  #contact-save {
+    width: 100px;
   }
 }
 @media (min-width: 340px) and (max-width: 360px) {
@@ -674,6 +696,12 @@ h5 {
   }
   #hide-class {
     display: none;
+  }
+  #contact-save {
+    width: 100px;
+  }
+  #locationlist {
+    padding-left: 2px;
   }
 }
 
@@ -703,5 +731,13 @@ h5 {
   }
   #hide-class {
     display: none;
+  }
+  #contact-save {
+    width: 80px;
+    height: 38px;
+  }
+  #locationlist {
+    width: 220px;
+    padding-left: 2px;
   }
 }
