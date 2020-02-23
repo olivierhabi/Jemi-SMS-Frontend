@@ -293,6 +293,7 @@ h5 {
 }
 .sidebar-link {
   background: #ffffff;
+  color: #040d14;
 }
 .sidebar-link:hover {
   background: #ffffff;
@@ -312,6 +313,8 @@ h5 {
   font-family: "DIN Web", sans-serif;
   text-decoration: none;
   font-weight: bold;
+  opacity: 0.8;
+  font-size: 17px;
 }
 #favicon {
   margin-right: 8px;
@@ -441,6 +444,9 @@ h5 {
   outline: none !important;
   border-color: #21ce99;
   box-shadow: none;
+}
+.align-middle a {
+  // color: red;
 }
 
 /* 
