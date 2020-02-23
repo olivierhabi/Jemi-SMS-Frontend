@@ -7,40 +7,14 @@ import {
 import API from "./Api";
 import { useHistory } from "react-router-dom";
 import DropZone from "../lib/DropZone";
+import ContactOnePage from "./ContactOnePage";
 
 const ContactPage = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [state, setState] = useState({
     jsonResult: null
   });
   const history = useHistory();
-
-  const contactSave = e => {
-    e.preventDefault();
-    const token = localStorage.getItem("auth-token");
-    const options = {
-      headers: { Authorization: token }
-    };
-    API.post(
-      "/contact",
-      {
-        name: name,
-        phone: phone
-      },
-      options
-    ).then(
-      response => {
-        setErrorMessage(response.data.message);
-        console.log(response.data.message);
-        history.push("/contacts");
-      },
-      error => {
-        console.log(error.message);
-      }
-    );
-  };
 
   const importContact = e => {
     e.preventDefault();
@@ -53,6 +27,7 @@ const ContactPage = () => {
       headers: { Authorization: token }
     };
     if (data === null) {
+      setErrorMessage("Please Import Your Contact file");
       console.log("Please Import Your Contact file");
       return;
     }
@@ -76,6 +51,20 @@ const ContactPage = () => {
     history.push("/contacts");
   };
 
+  const Error = () => {
+    if (!errorMessage) {
+      return null;
+    }
+    return (
+      <div>
+        <p id="error-message">
+          <FontAwesomeIcon icon={faExclamationCircle} />
+          {errorMessage}
+        </p>
+      </div>
+    );
+  };
+
   return (
     <main class="content">
       <div class="container-fluid p-0">
@@ -84,6 +73,7 @@ const ContactPage = () => {
         </h1>
         <div id="message-row">
           <div class="card">
+            <ContactOnePage />
             <div id="signup-form">
               <div class="media">
                 <div class="media-body">
@@ -153,7 +143,9 @@ const ContactPage = () => {
                 </div>
               </div>
               <form class="needs-validation" onSubmit={importContact}>
-                <div class="form-row">{/*<Error />*/}</div>
+                <div class="form-row">
+                  <Error />
+                </div>
                 <button
                   id="signup-btn"
                   class="btn btn-outline-light"

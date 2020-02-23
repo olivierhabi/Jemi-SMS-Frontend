@@ -5,60 +5,50 @@ import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
-const MessagePage = () => {
-  const [message, setMessage] = useState("");
-  const [sender, setSender] = useState("");
+const ContactOnePage = () => {
+  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [statusMessage, setStatusMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const history = useHistory();
 
-  const sendMessage = async e => {
+  const contactSave = e => {
     e.preventDefault();
-
     const token = localStorage.getItem("auth-token");
     const options = {
       headers: { Authorization: token }
     };
-
-    await API.post(
-      "/message",
+    API.post(
+      "/contact",
       {
-        message: message,
-        sender: sender,
+        name: name,
         phone: phone
       },
       options
     ).then(
       response => {
-        // console.log(response.data.message);
-        const { message } = response.data;
-        setStatusMessage(message);
-        setMessage("");
-        setSender("");
-        setPhone("");
-        history.push("/messages");
+        setErrorMessage(response.data.message);
+        console.log(response.data.message);
+        history.push("/contacts");
       },
       error => {
-        // console.log(error);
-        const { message } = error.response.data;
-        setMessage(message);
+        console.log(error.message);
       }
     );
   };
-  console.log(statusMessage);
+
   const Error = () => {
-    if (!statusMessage) {
+    if (!errorMessage) {
       return null;
     }
     return (
       <div>
         <p id="error-message">
           <FontAwesomeIcon icon={faExclamationCircle} />
-          {statusMessage}
+          {errorMessage}
         </p>
       </div>
     );
@@ -73,17 +63,31 @@ const MessagePage = () => {
         class="btn btn-outline-light"
         type="submit"
       >
-        Single
+        Contact
       </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Single Message</Modal.Title>
+          <Modal.Title>Single Contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div id="one-message-form">
-            <form onSubmit={sendMessage} class="needs-validation">
+            <form onSubmit={contactSave} class="needs-validation">
               <div class="form-row">
+                <div id="">
+                  <label id="username-label" for="usrename">
+                    Name
+                  </label>
+                  <input
+                    value={name}
+                    placeholder="Name"
+                    onChange={e => setName(e.target.value)}
+                    type="text"
+                    class="form-control"
+                    id="phone-one"
+                    required
+                  />
+                </div>
                 <div id="">
                   <label id="username-label" for="usrename">
                     Phone
@@ -96,33 +100,6 @@ const MessagePage = () => {
                     class="form-control"
                     id="phone-one"
                     required
-                  />
-                </div>
-                <div id="">
-                  <label id="username-label" for="usrename">
-                    Sender
-                  </label>
-                  <input
-                    type="text"
-                    value={sender}
-                    placeholder="Sender"
-                    onChange={e => setSender(e.target.value)}
-                    class="form-control"
-                    id="sender-one"
-                    required
-                  />
-                </div>
-                <div id="username-input">
-                  <label id="username-label" for="message">
-                    Message
-                  </label>
-                  <br />
-                  <textarea
-                    type="text"
-                    value={message}
-                    placeholder="Your Message"
-                    onChange={e => setMessage(e.target.value)}
-                    id="message-one"
                   />
                 </div>
               </div>
@@ -139,7 +116,26 @@ const MessagePage = () => {
         </Modal.Body>
       </Modal>
     </div>
+    /*<div>
+      <p>Add contact</p>
+      <form onSubmit={contactSave}>
+        <input
+          value={name}
+          type="text"
+          placeholder="name"
+          onChange={e => setName(e.target.value)}
+        />
+        <input
+          value={phone}
+          type="text"
+          placeholder="phone"
+          onChange={e => setPhone(e.target.value)}
+        />
+        <Error />
+        <button>Save contact</button>
+      </form>
+    </div>*/
   );
 };
 
-export default MessagePage;
+export default ContactOnePage;
