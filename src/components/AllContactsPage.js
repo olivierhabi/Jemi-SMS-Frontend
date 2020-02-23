@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "./Api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [data, setData] = useState([]);
@@ -38,34 +40,71 @@ function App() {
 
   const ContactData = ({ contact, deleteContact }) => {
     return (
-      <div>
-        <li key={contact.id}>
-          {contact.name}, {contact.phone}
-          <button onClick={() => deleteContact(contact.id)}> Remove</button>
-        </li>
-      </div>
+      <tr>
+        <td>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" />
+            <span class="custom-control-label"></span>
+          </label>
+        </td>
+        <td>{contact.name}</td>
+        <div id="hide-class">
+          <td>{contact.phone}</td>
+        </div>
+        <td>
+          <a id="remove-icon" onClick={() => deleteContact(contact.id)}>
+            {" "}
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </a>
+        </td>
+      </tr>
     );
   };
+
   const refreshPage = () => {
     window.location.reload();
   };
 
   return (
-    <div>
-      <h1> My Saved contact</h1>
-      <p>{message}</p>
-      <ul>
-        {data.map(contact => (
-          <ContactData
-            key={contact.id}
-            contact={contact}
-            deleteContact={deleteContact}
-          />
-        ))}
-        <button>Remove selected</button>
-        <button onClick={() => refreshPage()}>Refresh</button>
-      </ul>
-    </div>
+    <main class="content">
+      <div class="container-fluid p-0">
+        <h1 id="header-h1" class="h3 mb-3">
+          Sent Messages
+        </h1>
+        <div id="message-row">
+          <div class="row">
+            <div class="card">
+              <div id="message-view">
+                <div class="card-body">
+                  <table id="datatables-basic" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Select</th>
+                        <th>Name</th>
+                        <div id="hide-class">
+                          <th>Phone</th>
+                        </div>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.map(contact => (
+                        <ContactData
+                          key={contact.id}
+                          contact={contact}
+                          deleteContact={deleteContact}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                  <button onClick={() => refreshPage()}>Refresh</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
 export default App;
