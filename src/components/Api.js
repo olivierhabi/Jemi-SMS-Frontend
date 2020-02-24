@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: `gambino-backend.herokuapp.com/api`
+  baseURL: `https://gambino-backend.herokuapp.com/api`
 });
