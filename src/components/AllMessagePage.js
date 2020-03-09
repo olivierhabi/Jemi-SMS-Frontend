@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import API from "./Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashAlt,
+  faExclamationCircle,
+  faCheck
+} from "@fortawesome/free-solid-svg-icons";
 
 function AllMessagePage() {
   const [data, setData] = useState([]);
@@ -30,26 +34,38 @@ function AllMessagePage() {
     };
   }, []);
 
-  const MessageData = ({ message, deleteMessage }) => {
+  const MessageData = ({ message, deleteMessage, index }) => {
     return (
       <tr>
-        <td>
+        <td id="first-table">
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" />
             <span class="custom-control-label"></span>
           </label>
         </td>
-        <td>{message.phone}</td>
+        <td class="phone-td">{message.phone}</td>
         <div id="hide-class">
           <td>{message.sender}</td>
-          <td>{message.message}</td>
+          <td id="message-text">{message.message}</td>
+          <td>{message.cost}</td>
         </div>
-        <td>
-          <a id="remove-icon" onClick={() => deleteMessage(message.id)}>
-            {" "}
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </a>
+        <td id="status-td">
+          <div class="inline-status">
+            {message.status === "Q" ? (
+              <FontAwesomeIcon id="check-icon" icon={faCheck} />
+            ) : (
+              <FontAwesomeIcon id="error-icon" icon={faExclamationCircle} />
+            )}
+          </div>
+          <div class="inline-status">
+            <a id="remove-icon" onClick={() => deleteMessage(message.id)}>
+              {" "}
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </a>
+          </div>
         </td>
+
+        <td></td>
       </tr>
     );
   };
@@ -78,30 +94,35 @@ function AllMessagePage() {
           <div class="row">
             <div class="card">
               <div id="message-view">
-                <div class="card-body">
-                  <table id="datatables-basic" class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>Select</th>
-                        <th>Phone</th>
-                        <div id="hide-class">
-                          <th>Sender</th>
-                          <th>Message</th>
-                        </div>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {data.map(message => (
+                <table id="datatables-basic" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Select</th>
+                      <th>Phone</th>
+                      <div id="hide-class">
+                        <th>Sender</th>
+                        <th>Message</th>
+                        <th>Cost</th>
+                        <th>Status</th>
+                      </div>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((message, index) => {
+                      // eslint-disable-next-line no-redeclare
+                      var index = index + 1;
+                      return (
                         <MessageData
                           key={message.id}
                           message={message}
                           deleteMessage={deleteMessage}
+                          index={index}
                         />
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

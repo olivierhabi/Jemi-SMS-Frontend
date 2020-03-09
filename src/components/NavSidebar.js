@@ -8,8 +8,10 @@ import {
   faIdCardAlt,
   faUser,
   faHistory,
-  faUsers
+  faUsers,
+  faMoneyCheckAlt
 } from "@fortawesome/free-solid-svg-icons";
+import Modal from "./TopupModal";
 
 const NavSidebar = () => (
   <nav id="sidebar" class="sidebar">
@@ -129,13 +131,10 @@ const NavSidebar = () => (
         </li>
       </ul>
 
-      <div class="sidebar-bottom d-none d-lg-block">
+      <div id="sidebar-bottom" class="sidebar-bottom d-none d-lg-block">
         <div class="media">
-          <div class="media-body">
-            <h5 class="mb-1">Chris Wood</h5>
-            <div>
-              <i class="fas fa-circle text-success"></i> Online
-            </div>
+          <div id="media-body" class="media-body">
+            <Modal />
           </div>
         </div>
       </div>

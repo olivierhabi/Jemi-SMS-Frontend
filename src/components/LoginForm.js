@@ -24,7 +24,7 @@ const LoginForm = () => {
         localStorage.setItem("auth-token", token);
         setStatus(status);
         setMessage(message);
-        history.push("/account");
+        history.push("/message");
       },
       error => {
         if (!error.response) {
