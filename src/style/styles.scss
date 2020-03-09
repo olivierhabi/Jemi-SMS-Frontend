@@ -112,6 +112,13 @@ h5 {
   margin-left: 100px;
   margin-right: 100px;
 }
+#signup-form-modal {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  margin-left: 60px;
+  margin-right: 100px;
+}
 #one-message-form {
   flex-direction: column;
   margin-bottom: 60px;
@@ -128,7 +135,6 @@ h5 {
   margin-top: 50px;
   margin-left: 70px;
   margin-right: 400px;
-  border-top: 2px solid;
 }
 #email {
   width: 400px;
@@ -215,7 +221,6 @@ h5 {
   padding: 10px;
   position: absolute;
   right: 32px;
-  color: red;
 }
 #logout-btn a {
   color: white;
@@ -288,9 +293,7 @@ h5 {
   font-weight: bold;
   font-family: "DIN Web", sans-serif;
 }
-#card-body {
-  padding: 5px;
-}
+
 .sidebar-link {
   background: #ffffff;
   color: #040d14;
@@ -390,14 +393,18 @@ h5 {
   margin: 12px;
   font-family: "DIN Web", sans-serif;
 }
+
+#index-message {
+  display: inline-block;
+  font-size: 14px;
+  color: black;
+  font-family: "DIN Web", sans-serif;
+}
 .sender {
   width: 300px;
   height: 38px;
 }
-// .sender:focus {
-//   border-color: #21ce99;
-//   box-shadow: none;
-// }
+
 #form-sender-card {
   max-width: 400px;
   margin-left: 2px;
@@ -445,8 +452,73 @@ h5 {
   border-color: #21ce99;
   box-shadow: none;
 }
-.align-middle a {
-  // color: red;
+#check-icon {
+  color: #21ce99;
+}
+#error-icon {
+  color: #e91e63;
+}
+#message-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+}
+#phone-td {
+  margin-left: 0em;
+}
+#status-td {
+  padding-left: 0em;
+}
+.inline-status {
+  display: inline-block;
+  padding: 5px;
+}
+#nav-inline-balance {
+  display: inline-block;
+  padding-right: 160px;
+  margin-top: 11px;
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
+#topup-btn {
+  background-color: #21ce99;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: white;
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+}
+#sidebar-bottom {
+  background: #040d14 !important;
+}
+#media-body {
+  padding-left: 60px;
+}
+#price-info {
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  width: 400px;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+#payment-topup {
+  width: 400px;
+  height: 48px;
+}
+#phone-topup {
+  width: 400px;
+  height: 48px;
+}
+#amount-topup {
+  width: 400px;
+  height: 48px;
 }
 
 /* 
@@ -487,6 +559,18 @@ h5 {
     flex-direction: column;
     margin-left: 40px;
   }
+  #payment-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 360px;
+    height: 48px;
+  }
 }
 /* 
   ##Device = Laptops, Desktops
@@ -513,6 +597,18 @@ h5 {
   #message-view {
     flex-direction: column;
     margin-left: 40px;
+  }
+  #payment-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 360px;
+    height: 48px;
   }
 }
 
@@ -549,6 +645,21 @@ h5 {
   #contact-save {
     width: 220px;
   }
+  #signup-form-modal {
+    margin-left: 60px;
+  }
+  #payment-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 360px;
+    height: 48px;
+  }
 }
 
 /* 
@@ -563,10 +674,6 @@ h5 {
   #import-card {
     max-width: 400px;
   }
-
-  // .dropzone {
-  //   width: 360px;
-  // }
 }
 
 /* 
@@ -600,6 +707,21 @@ h5 {
   }
   #contact-save {
     width: 220px;
+  }
+  #signup-form-modal {
+    margin-left: 60px;
+  }
+  #payment-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 360px;
+    height: 48px;
   }
 }
 #message-row {
@@ -639,6 +761,21 @@ h5 {
   }
   #contact-save {
     width: 120px;
+  }
+  #signup-form-modal {
+    margin-left: 20px;
+  }
+  #payment-topup {
+    width: 320px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 320px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 320px;
+    height: 48px;
   }
 }
 
@@ -680,6 +817,21 @@ h5 {
   #contact-save {
     width: 100px;
   }
+  #signup-form-modal {
+    margin-left: 20px;
+  }
+  #payment-topup {
+    width: 320px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 320px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 320px;
+    height: 48px;
+  }
 }
 @media (min-width: 340px) and (max-width: 360px) {
   #contact {
@@ -708,6 +860,21 @@ h5 {
   }
   #locationlist {
     padding-left: 2px;
+  }
+  #signup-form-modal {
+    margin-left: 20px;
+  }
+  #payment-topup {
+    width: 280px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 280px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 280px;
+    height: 48px;
   }
 }
 
@@ -745,5 +912,20 @@ h5 {
   #locationlist {
     width: 220px;
     padding-left: 2px;
+  }
+  #signup-form-modal {
+    margin-left: 20px;
+  }
+  #payment-topup {
+    width: 250px;
+    height: 48px;
+  }
+  #phone-topup {
+    width: 250px;
+    height: 48px;
+  }
+  #amount-topup {
+    width: 250px;
+    height: 48px;
   }
 }

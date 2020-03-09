@@ -41,7 +41,7 @@ function Example() {
         const { message, token } = response.data;
         localStorage.setItem("auth-token", token);
         setMessage(message);
-        history.push("/account");
+        history.push("/message");
       },
       error => {
         if (!error.response) {

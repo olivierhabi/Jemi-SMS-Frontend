@@ -4,7 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExclamationCircle,
+  faMoneyCheckAlt
+} from "@fortawesome/free-solid-svg-icons";
 import ModalLogin from "./ModalLogin";
 import "../style/styles.scss";
 
@@ -14,6 +17,10 @@ const SignupForm = props => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [quantity, setQuantiy] = useState("");
+  const [amount, setAmount] = useState("");
+  const [tax, setTax] = useState();
+  const [taxExcl, setTaxExcl] = useState("");
   const history = useHistory();
 
   const [show, setShow] = useState(false);
@@ -61,16 +68,32 @@ const SignupForm = props => {
       </div>
     );
   };
+  function percentage(value) {
+    return (18 * value) / 100;
+  }
+  function taxEcluded(value) {
+    const tax = value - percentage(value);
+    return tax;
+  }
+  const onAmountChange = e => {
+    setAmount(e.target.value);
+  };
 
   return (
     <div>
-      <a onClick={handleShow} id="signup" class="btn btn-outline-light">
-        Sign Up
-      </a>
+      <button
+        onClick={handleShow}
+        id="topup-btn"
+        class="btn btn-outline-light"
+        type="submit"
+      >
+        <FontAwesomeIcon id="favicon" icon={faMoneyCheckAlt} />
+        Topup
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Register Your Account.</Modal.Title>
+          <Modal.Title>Topup</Modal.Title>
         </Modal.Header>
 
         <div id="signup-form-modal">
@@ -78,73 +101,78 @@ const SignupForm = props => {
             <div class="form-row">
               <div id="username-input">
                 <label id="username-label" for="usrename">
-                  Username
+                  Payment Method
                 </label>
                 <input
-                  value={username}
-                  onChange={e => setUsername(e.target.value)}
+                  defaultValue="MTN Mobile Money"
                   type="text"
                   class="form-control"
-                  id="username"
+                  id="payment-topup"
                   placeholder="Username"
+                  required
+                  readOnly
+                />
+              </div>
+              <div id="emailinput">
+                <label id="email-label" for="email">
+                  Phone Number
+                </label>
+                <input
+                  maxlength="10"
+                  value={phone}
+                  onChange={e => {
+                    const phone = e.target.value;
+                    if (phone.match(/^[0-9]*$/)) {
+                      setPhone(phone);
+                    }
+                  }}
+                  type="text"
+                  class="form-control"
+                  id="phone-topup"
+                  placeholder="Phone Number"
                   required
                 />
               </div>
               <div id="emailinput">
                 <label id="email-label" for="email">
-                  Email
+                  Amount
                 </label>
                 <input
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  type="text"
+                  value={amount}
+                  onChange={e => {
+                    // setAmount(() => {
+                    const amount = e.target.value;
+                    if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+                      setAmount(amount);
+                    }
+                    // });
+                    setQuantiy(e.target.value / 16);
+                    setTax(percentage(e.target.value));
+                    setTaxExcl(taxEcluded(e.target.value));
+                    return;
+                  }}
+                  type=""
                   class="form-control"
-                  id="email"
-                  placeholder="Email"
+                  id="amount-topup"
+                  placeholder="Amount"
+                  pattern="[0-9]{10}"
                   required
                 />
               </div>
-              <div id="password-input">
-                <label id="password-label" for="password">
-                  Password
-                </label>
-                <input
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  placeholder="Password"
-                  required
-                />
-              </div>
-              <br />
-              <div id="phone-input">
-                <label id="phone-label" for="phone">
-                  Phone
-                </label>
-                <input
-                  value={phone}
-                  onChange={e => setPhone(e.target.value)}
-                  type="phone"
-                  class="form-control"
-                  id="phone"
-                  placeholder="Phone"
-                  required
-                />
+              <div id="price-info">
+                <p>Price Information:</p>
+                <div id="price-total" align="right">
+                  <p>Unit price: 16 FRW</p>
+                  <p>Quantity: {quantity || 0}</p>
+                  <p>Price tax excl: {taxExcl || 0} FRW</p>
+                  <p>VAT(18%): {tax || 0} FRW</p>
+                  <p>Total price: {amount || 0} FRW</p>
+                </div>
               </div>
             </div>
-            <Error />
             <button id="signup-btn" class="btn btn-outline-light" type="submit">
-              Sign Up
+              Send
             </button>
-            <p id="signup-word">
-              Have an account
-              <NavLink id="signup-link" to="/signin">
-                Login
-              </NavLink>{" "}
-              Here!
-            </p>
           </form>
         </div>
       </Modal>
