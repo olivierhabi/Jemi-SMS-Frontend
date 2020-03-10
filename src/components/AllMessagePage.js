@@ -102,8 +102,6 @@ function AllMessagePage() {
                       <div id="hide-class">
                         <th>Sender</th>
                         <th>Message</th>
-                        <th>Cost</th>
-                        <th>Status</th>
                       </div>
                       <th>Action</th>
                     </tr>

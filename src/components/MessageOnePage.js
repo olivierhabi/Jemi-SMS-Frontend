@@ -89,9 +89,16 @@ const MessagePage = () => {
                     Phone
                   </label>
                   <input
+                    maxlength="10"
                     value={phone}
                     placeholder="Phone number"
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={e => {
+                      const phone = e.target.value;
+                      if (phone.match(/^[0-9]*$/)) {
+                        setPhone(phone);
+                      }
+                    }}
+                    // onChange={e => setPhone(e.target.value)}
                     type="text"
                     class="form-control"
                     id="phone-one"

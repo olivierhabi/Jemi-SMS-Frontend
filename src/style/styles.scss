@@ -146,6 +146,7 @@ h5 {
   border-color: #21ce99;
   box-shadow: none;
 }
+
 #password {
   width: 400px;
   height: 48px;
@@ -474,6 +475,7 @@ h5 {
   display: inline-block;
   padding: 5px;
 }
+
 #nav-inline-balance {
   display: inline-block;
   padding-right: 160px;
@@ -516,11 +518,48 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 400px;
   height: 48px;
 }
+#phone-topup:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
+
+#amount-topup:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
 #amount-topup {
   width: 400px;
   height: 48px;
 }
 
+#nb-spinner {
+  width: 75px;
+  height: 75px;
+  margin: 0;
+  background: transparent;
+  border-top: 4px solid #21ce99;
+  border-right: 4px solid transparent;
+  border-radius: 50%;
+  -webkit-animation: 1s spin linear infinite;
+  animation: 1s spin linear infinite;
+}
+
+#spinner-modal {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  margin-left: 200px;
+  margin-right: 100px;
+}
+#response-modal {
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+}
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -568,6 +607,10 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 48px;
   }
   #amount-topup {
+    width: 360px;
+    height: 48px;
+  }
+  #email-topup {
     width: 360px;
     height: 48px;
   }
