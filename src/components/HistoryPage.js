@@ -3,29 +3,23 @@ import API from "./Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-function App() {
+import "../style/classic.scss";
+
+const HistoryPage = () => {
   const [data, setData] = useState([]);
   const [message, setMessage] = useState("");
-
-  const deleteContact = async id => {
-    await API.delete(`/contact/${id}`, options)
-      .then(res => {
-        setMessage(res.data.message);
-        fetchData();
-      })
-      .catch(err => console.log(err));
-  };
 
   const token = localStorage.getItem("auth-token");
   const options = {
     headers: { Authorization: token }
   };
+
   const fetchData = async () => {
     let mounted = true;
-    await API.get("/contact", options)
+    await API.get("/history", options)
       .then(res => {
         if (mounted) {
-          setData(res.data.contactData);
+          setData(res.data.data);
         }
       })
       .catch(err => console.log(err));
@@ -38,29 +32,21 @@ function App() {
     };
   }, []);
 
-  const ContactData = ({ contact, deleteContact }) => {
+  const HistoryData = ({ history, index }) => {
     return (
       <tr>
         <td>
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" />
-            <span class="custom-control-label"></span>
-          </label>
+          {index}. {history.transaction}
         </td>
-        <td>{contact.name}</td>
+        <td>{history.customer}</td>
+        <td>{history.amount}</td>
+        <td>{history.smsQuantity}</td>
         <div id="hide-class">
-          <td>{contact.phone}</td>
+          <td>{history.createdAt}</td>
         </div>
-        <td>
-          <a id="remove-icon" onClick={() => deleteContact(contact.id)}>
-            {" "}
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </a>
-        </td>
       </tr>
     );
   };
-
   const refreshPage = () => {
     window.location.reload();
   };
@@ -69,7 +55,7 @@ function App() {
     <main class="content">
       <div class="container-fluid p-0">
         <h1 id="header-h1" class="h3 mb-3">
-          Saved Contacts
+          Sent Messages
         </h1>
         <div id="message-row">
           <div class="row">
@@ -79,22 +65,28 @@ function App() {
                   <table id="datatables-basic" class="table table-striped">
                     <thead>
                       <tr>
-                        <th>Select</th>
-                        <th>Name</th>
-                        <div id="hide-class">
-                          <th>Phone</th>
-                        </div>
                         <th>Action</th>
+                        <th>User</th>
+                        <th>amount</th>
+                        <th>Qty</th>
+
+                        <div id="hide-class">
+                          <th>customer</th>
+                        </div>
                       </tr>
                     </thead>
                     <tbody>
-                      {data.map(contact => (
-                        <ContactData
-                          key={contact.id}
-                          contact={contact}
-                          deleteContact={deleteContact}
-                        />
-                      ))}
+                      {data.map((history, index) => {
+                        // eslint-disable-next-line no-redeclare
+                        var index = index + 1;
+                        return (
+                          <HistoryData
+                            key={history.id}
+                            history={history}
+                            index={index}
+                          />
+                        );
+                      })}
                     </tbody>
                   </table>
                   <button onClick={() => refreshPage()}>Refresh</button>
@@ -106,5 +98,5 @@ function App() {
       </div>
     </main>
   );
-}
-export default App;
+};
+export { HistoryPage as default };

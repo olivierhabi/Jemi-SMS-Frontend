@@ -64,8 +64,6 @@ function AllMessagePage() {
             </a>
           </div>
         </td>
-
-        <td></td>
       </tr>
     );
   };
@@ -73,7 +71,6 @@ function AllMessagePage() {
   const deleteMessage = async id => {
     await API.delete(`/message/${id}`, options)
       .then(res => {
-        // console.log(res);
         setMessage(res.data.message);
         fetchData();
       })
