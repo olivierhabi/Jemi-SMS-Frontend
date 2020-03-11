@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignupFormPage from "../components/SignupFormPage";
 import LoginForm from "../components/LoginForm";
-import Dashboard from "../components/Dashboard";
+import HistoryPage from "../components/HistoryPage";
 import Authenticated from "../components/Authenticated";
 import HomePage from "../components/HomePage";
 import MessagePage from "../components/MessagePage";
@@ -36,8 +36,8 @@ const AppRouter = () => {
                     <Route path="/message" component={MessagePage} />
                     <Route path="/onemessage" component={MessageOnePage} />
                     <Route path="/messages" component={AllMessagePage} />
-                    <Route path="/account" component={Dashboard} />
                     <Route path="/logout" component={Logout} />
+                    <Route path="/history" component={HistoryPage} />
                   </Authenticated>
                 </main>
                 <FooterPage />

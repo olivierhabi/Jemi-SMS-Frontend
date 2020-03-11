@@ -74,7 +74,7 @@ const NavSidebar = () => (
           <span class="align-middle">
             <NavLink
               id="active-hover"
-              to="/contact"
+              to="/history"
               activeClassName="is-active"
               className="sidebar-link"
               exact={true}

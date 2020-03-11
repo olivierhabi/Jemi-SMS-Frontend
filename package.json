@@ -14,6 +14,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "csvtojson": "^2.0.10",
+    "dotenv": "^8.2.0",
     "node-sass": "^4.13.1",
     "npm": "^6.13.7",
     "object-to-array-convert": "^1.1.0",
@@ -31,7 +32,7 @@
     "xlsx": "^0.15.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start  -uses .env",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
