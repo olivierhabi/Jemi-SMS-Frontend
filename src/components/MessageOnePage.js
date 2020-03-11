@@ -9,15 +9,25 @@ const MessagePage = () => {
   const [message, setMessage] = useState("");
   const [sender, setSender] = useState("");
   const [phone, setPhone] = useState("");
+  const [loader, setLoader] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+  const [response, setResponse] = useState(false);
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setMessage("");
+    setSender("");
+    setPhone("");
+    setLoader(false);
+    setResponse(false);
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
   const history = useHistory();
 
   const sendMessage = async e => {
     e.preventDefault();
+    setLoader(true);
 
     const token = localStorage.getItem("auth-token");
     const options = {
@@ -40,29 +50,88 @@ const MessagePage = () => {
         setMessage("");
         setSender("");
         setPhone("");
+        setResponse(true);
+        setLoader(false);
         history.push("/messages");
       },
       error => {
         // console.log(error);
         const { message } = error.response.data;
-        setMessage(message);
+        setStatusMessage(message);
+        setResponse(true);
+        setLoader(false);
       }
     );
   };
-  console.log(statusMessage);
-  const Error = () => {
-    if (!statusMessage) {
-      return null;
-    }
+  // console.log(statusMessage);
+  // const Error = () => {
+  //   if (!statusMessage) {
+  //     return null;
+  //   }
+  //   return (
+  //     <div>
+  //       <p id="error-message">
+  //         <FontAwesomeIcon icon={faExclamationCircle} />
+  //         {statusMessage}
+  //       </p>
+  //     </div>
+  //   );
+  // };
+
+  if (loader) {
     return (
       <div>
-        <p id="error-message">
-          <FontAwesomeIcon icon={faExclamationCircle} />
-          {statusMessage}
-        </p>
+        <button
+          onClick={handleShow}
+          align="left"
+          id="one-message-btn"
+          class="btn btn-outline-light"
+          type="submit"
+        >
+          Single
+        </button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Wait for Response</Modal.Title>
+          </Modal.Header>
+          <div id="spinner-modal">
+            <div id="nb-spinner"></div>
+          </div>
+        </Modal>
       </div>
     );
-  };
+  }
+
+  if (response) {
+    return (
+      <div>
+        <button
+          onClick={handleShow}
+          align="left"
+          id="one-message-btn"
+          class="btn btn-outline-light"
+          type="submit"
+        >
+          Single
+        </button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Response</Modal.Title>
+          </Modal.Header>
+          <div id="response-modal">
+            <p>
+              <div class="inline-status">
+                <FontAwesomeIcon id="error-icon" icon={faExclamationCircle} />
+                {statusMessage}
+              </div>
+            </p>
+          </div>
+        </Modal>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -133,7 +202,6 @@ const MessagePage = () => {
                   />
                 </div>
               </div>
-              <Error />
               <button
                 id="signup-btn"
                 class="btn btn-outline-light"
