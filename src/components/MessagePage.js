@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { findPhoneNumbersInText } from "libphonenumber-js";
 import API from "./Api";
 import DropZone from "../lib/DropZone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,10 +10,8 @@ import {
 import MessageOnePage from "./MessageOnePage";
 
 const MessagePage = () => {
-  const [state, setState] = useState({
-    jsonResult: null
-  });
   const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
   const [sender, setSender] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
 
@@ -23,52 +22,41 @@ const MessagePage = () => {
     const options = {
       headers: { Authorization: token }
     };
-    const data = state.jsonResult;
-    // console.log(data);
-    // console.log(sender);
-    // console.log(message);
-    if (data === null) {
-      setStatusMessage("Please Import your contact file");
-      console.log(statusMessage);
-      return;
-    }
+    const findNumbers = findPhoneNumbersInText(`${phone}`, "RW");
+    const data = findNumbers.map(x => x.number.number);
+    const allMessage = message.match(/[\s\S]{1,160}/g) || [];
 
     for (var i = 0; i < data.length; i++) {
-      const phone = data[0].phone;
+      const phone = data[i];
 
-      await API.post(
-        "/message",
-        {
-          message: message,
-          sender: sender,
-          phone: phone
-        },
-        options
-      ).then(
-        response => {
-          setStatusMessage("Message sent");
-          setMessage("");
-          setSender("");
-          setState("");
-        },
-        error => {
-          console.log(error);
-          // const { status, message } = error.response.data;
-          // setStatus(status);
-          // setMessage(message);
-        }
-      );
+      for (var a = 0; a < allMessage.length; a++) {
+        const message = allMessage[a];
 
-      // console.log([
-      //   {
-      //     phone,
-      //     sender,
-      //     message
-      //   }
-      // ]);
+        await API.post(
+          "/message",
+          {
+            message: message,
+            sender: sender,
+            phone: phone
+          },
+          options
+        ).then(
+          response => {
+            setStatusMessage("Message sent");
+            setMessage("");
+            setSender("");
+          },
+          error => {
+            console.log(error);
+            // const { status, message } = error.response.data;
+            // setStatus(status);
+            // setMessage(message);
+          }
+        );
+      }
     }
-    console.log(statusMessage);
   };
+
   const Error = () => {
     if (!statusMessage) {
       return null;
@@ -94,65 +82,21 @@ const MessagePage = () => {
             <MessageOnePage />
 
             <div id="signup-form">
-              <div class="media">
-                <div class="media-body">
-                  <div id="import-content">
-                    <div>
-                      <DropZone
-                        getJson={jsonResult => {
-                          setState({ jsonResult });
-                        }}
-                      >
-                        <p id="import-contact">
-                          <FontAwesomeIcon icon={faFileImport} />
-                          Import Contact.
-                        </p>
-                      </DropZone>
-                    </div>
-                  </div>
-
-                  {state.jsonResult ? (
-                    <div>
-                      <label id="username-label" for="usrename">
-                        Imported Contacts
-                      </label>
-                      <div
-                        id="contacts-forms"
-                        class="container-fluid vh-50 d-flex flex-column"
-                      >
-                        <div
-                          id="locationlist"
-                          class="col overflow-auto bg-info"
-                        >
-                          <div class="position-absolute">
-                            {state.jsonResult.map((contact, index) => {
-                              // eslint-disable-next-line no-redeclare
-                              var index = index + 1;
-                              return (
-                                <div class="form-row">
-                                  <p id="index-number">{index}. </p>
-                                  <div id="username-input">
-                                    <input
-                                      key={index}
-                                      type="text"
-                                      name="phone"
-                                      defaultValue={contact.phone}
-                                      class="form-control"
-                                      id="contact"
-                                    />
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
               <form class="needs-validation" onSubmit={sendMessage}>
                 <div class="form-row">
+                  <div id="username-input">
+                    <label id="username-label" for="message">
+                      Phone Numbers
+                    </label>
+                    <br />
+                    <textarea
+                      type="text"
+                      id="message"
+                      value={phone}
+                      placeholder="Your phone numbers"
+                      onChange={e => setPhone(e.target.value)}
+                    />
+                  </div>
                   <div id="username-input">
                     <label id="username-label" for="usrename">
                       Sender
@@ -179,9 +123,14 @@ const MessagePage = () => {
                       placeholder="Your Message"
                       onChange={e => setMessage(e.target.value)}
                     />
+                    <br />
+                    <p id="message-length">
+                      {message.length} Characters of message{" "}
+                      {Math.ceil(message.length / 160)}
+                    </p>
                   </div>
-                  <Error />
                 </div>
+                <Error />
                 <button
                   id="signup-btn"
                   class="btn btn-outline-light"
