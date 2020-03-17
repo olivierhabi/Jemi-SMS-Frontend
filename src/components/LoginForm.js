@@ -10,10 +10,13 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
+  const [loader, setLoader] = useState(false);
   const history = useHistory();
 
   const Login = e => {
     e.preventDefault();
+    setLoader(true);
+    setMessage("");
 
     API.post("/auth/signin", {
       email: email,
@@ -24,19 +27,34 @@ const LoginForm = () => {
         localStorage.setItem("auth-token", token);
         setStatus(status);
         setMessage(message);
+        setLoader(false);
         history.push("/message");
       },
       error => {
         if (!error.response) {
           const networkError = "Error: Network Error";
           setMessage(networkError);
+          setLoader(false);
         } else {
           const { status, message } = error.response.data;
           setStatus(status);
+          setLoader(false);
           setMessage(message);
         }
       }
     );
+  };
+
+  const SpinLoader = () => {
+    if (!loader) {
+      return null;
+    } else if (loader) {
+      return (
+        <div>
+          <div id="nb-spinner-button"></div>
+        </div>
+      );
+    }
   };
 
   const Error = () => {
@@ -119,6 +137,7 @@ const LoginForm = () => {
                             </div>
                           </div>
                           <Error />
+                          <SpinLoader />
                           <button
                             id="signup-btn"
                             class="btn btn-outline-light"

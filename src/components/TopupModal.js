@@ -74,10 +74,10 @@ const SignupForm = props => {
   }
   if (loader) {
     return (
-      <div>
+      <>
         <button
           onClick={handleShow}
-          id="topup-btn"
+          id="topup-button"
           class="btn btn-outline-light"
           type="submit"
         >
@@ -93,15 +93,15 @@ const SignupForm = props => {
             <div id="nb-spinner"></div>
           </div>
         </Modal>
-      </div>
+      </>
     );
   }
   if (response) {
     return (
-      <div>
+      <>
         <button
           onClick={handleShow}
-          id="topup-btn"
+          id="topup-button"
           class="btn btn-outline-light"
           type="submit"
         >
@@ -127,14 +127,14 @@ const SignupForm = props => {
             </p>
           </div>
         </Modal>
-      </div>
+      </>
     );
   }
   return (
-    <div>
+    <>
       <button
         onClick={handleShow}
-        id="topup-btn"
+        id="topup-button"
         class="btn btn-outline-light"
         type="submit"
       >
@@ -224,7 +224,7 @@ const SignupForm = props => {
           </form>
         </div>
       </Modal>
-    </div>
+    </>
   );
 };
 

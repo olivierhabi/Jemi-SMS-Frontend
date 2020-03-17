@@ -14,6 +14,7 @@ const SignupForm = props => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [loader, setLoader] = useState(false);
   const history = useHistory();
 
   const [show, setShow] = useState(false);
@@ -23,6 +24,8 @@ const SignupForm = props => {
 
   const singUp = e => {
     e.preventDefault();
+    setLoader(true);
+    setMessage("");
 
     API.post("/users", {
       username: username,
@@ -33,15 +36,18 @@ const SignupForm = props => {
       response => {
         const { message } = response.data;
         setMessage(message);
+        setLoader(false);
         // history.push("/account");
       },
       error => {
         if (!error.response) {
           const networkError = "Error: network error";
           setMessage(networkError);
+          setLoader(false);
         } else {
           const { message } = error.response.data;
           setMessage(message);
+          setLoader(false);
         }
       }
     );
@@ -60,6 +66,18 @@ const SignupForm = props => {
         </p>
       </div>
     );
+  };
+
+  const SpinLoader = () => {
+    if (!loader) {
+      return null;
+    } else if (loader) {
+      return (
+        <div>
+          <div id="nb-spinner-button"></div>
+        </div>
+      );
+    }
   };
 
   return (
@@ -135,6 +153,7 @@ const SignupForm = props => {
               </div>
             </div>
             <Error />
+            <SpinLoader />
             <button id="signup-btn" class="btn btn-outline-light" type="submit">
               Sign Up
             </button>

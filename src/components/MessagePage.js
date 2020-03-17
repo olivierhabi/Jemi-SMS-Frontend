@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import { findPhoneNumbersInText } from "libphonenumber-js";
 import API from "./Api";
-import DropZone from "../lib/DropZone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFileImport,
-  faExclamationCircle
-} from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import MessageOnePage from "./MessageOnePage";
 
 const MessagePage = () => {
@@ -14,9 +10,12 @@ const MessagePage = () => {
   const [phone, setPhone] = useState("");
   const [sender, setSender] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const sendMessage = async e => {
     e.preventDefault();
+    setLoader(true);
+    setStatusMessage("");
 
     const token = localStorage.getItem("auth-token");
     const options = {
@@ -25,7 +24,12 @@ const MessagePage = () => {
     const findNumbers = findPhoneNumbersInText(`${phone}`, "RW");
     const data = findNumbers.map(x => x.number.number);
     const allMessage = message.match(/[\s\S]{1,160}/g) || [];
-
+    console.log(data);
+    if (data.length === 0) {
+      setStatusMessage("Phone numbers is incorrect");
+      setLoader(false);
+      return;
+    }
     for (var i = 0; i < data.length; i++) {
       const phone = data[i];
 
@@ -43,14 +47,16 @@ const MessagePage = () => {
         ).then(
           response => {
             setStatusMessage("Message sent");
+            setLoader(false);
             setMessage("");
             setSender("");
+            setPhone("");
           },
           error => {
-            console.log(error);
-            // const { status, message } = error.response.data;
-            // setStatus(status);
-            // setMessage(message);
+            const { message } = error.response.data;
+
+            setStatusMessage(message);
+            setLoader(false);
           }
         );
       }
@@ -69,6 +75,17 @@ const MessagePage = () => {
         </p>
       </div>
     );
+  };
+  const SpinLoader = () => {
+    if (!loader) {
+      return null;
+    } else if (loader) {
+      return (
+        <div>
+          <div id="nb-spinner-button"></div>
+        </div>
+      );
+    }
   };
 
   return (
@@ -131,6 +148,7 @@ const MessagePage = () => {
                   </div>
                 </div>
                 <Error />
+                <SpinLoader />
                 <button
                   id="signup-btn"
                   class="btn btn-outline-light"

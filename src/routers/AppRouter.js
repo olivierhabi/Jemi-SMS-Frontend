@@ -14,6 +14,8 @@ import MessageOnePage from "../components/MessageOnePage";
 import FooterPage from "../components/FooterPage";
 import NavSidebar from "../components/NavSidebar";
 import NavTopDashboard from "../components/NavTopDashboard";
+import SchedulePage from "../components/SchedulePage";
+import AccountPage from "../components/AccountPage";
 
 const AppRouter = () => {
   return (
@@ -38,6 +40,8 @@ const AppRouter = () => {
                     <Route path="/messages" component={AllMessagePage} />
                     <Route path="/logout" component={Logout} />
                     <Route path="/history" component={HistoryPage} />
+                    <Route path="/schedule" component={SchedulePage} />
+                    <Route path="/account" component={AccountPage} />
                   </Authenticated>
                 </main>
                 <FooterPage />

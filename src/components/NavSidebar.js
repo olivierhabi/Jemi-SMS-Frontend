@@ -8,8 +8,7 @@ import {
   faIdCardAlt,
   faUser,
   faHistory,
-  faUsers,
-  faMoneyCheckAlt
+  faCalendarCheck
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "./TopupModal";
 
@@ -60,7 +59,7 @@ const NavSidebar = () => (
           <span class="align-middle">
             <NavLink
               id="active-hover"
-              to="/contact"
+              to="/account"
               activeClassName="is-active"
               className="sidebar-link"
               exact={true}
@@ -85,7 +84,7 @@ const NavSidebar = () => (
           </span>
         </li>
         <li id="sidebar-title" class="sidebar-header">
-          Contacts and Groups
+          Contacts and Schedule
         </li>
         <li class="sidebar-item active">
           <span class="align-middle">
@@ -119,25 +118,17 @@ const NavSidebar = () => (
           <span class="align-middle">
             <NavLink
               id="active-hover"
-              to="/contacts"
+              to="/schedule"
               activeClassName="is-active"
               className="sidebar-link"
               exact={true}
             >
-              <FontAwesomeIcon id="favicon" icon={faUsers} />
-              Groups
+              <FontAwesomeIcon id="favicon" icon={faCalendarCheck} />
+              Schedule
             </NavLink>
           </span>
         </li>
       </ul>
-
-      <div id="sidebar-bottom" class="sidebar-bottom d-none d-lg-block">
-        <div class="media">
-          <div id="media-body" class="media-body">
-            <Modal />
-          </div>
-        </div>
-      </div>
     </div>
   </nav>
 );

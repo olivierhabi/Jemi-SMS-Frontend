@@ -11,6 +11,7 @@ function Example() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loader, setLoader] = useState(false);
   const history = useHistory();
 
   const Error = () => {
@@ -32,6 +33,8 @@ function Example() {
 
   const Login = e => {
     e.preventDefault();
+    setLoader(true);
+    setMessage("");
 
     API.post("/auth/signin", {
       email: email,
@@ -41,18 +44,32 @@ function Example() {
         const { message, token } = response.data;
         localStorage.setItem("auth-token", token);
         setMessage(message);
+        setLoader(false);
         history.push("/message");
       },
       error => {
         if (!error.response) {
           const networkError = "Error: network error";
           setMessage(networkError);
+          setLoader(false);
         } else {
           const { message } = error.response.data;
+          setLoader(false);
           setMessage(message);
         }
       }
     );
+  };
+  const SpinLoader = () => {
+    if (!loader) {
+      return null;
+    } else if (loader) {
+      return (
+        <div>
+          <div id="nb-spinner-button"></div>
+        </div>
+      );
+    }
   };
 
   return (
@@ -101,6 +118,7 @@ function Example() {
                 </div>
               </div>
               <Error />
+              <SpinLoader />
               <button
                 id="signup-btn"
                 class="btn btn-outline-light"
