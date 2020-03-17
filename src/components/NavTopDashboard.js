@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import API from "./Api";
-
+import TopupModal from "./TopupModal";
 const NavTopDashboard = () => {
   const [balance, setBalance] = useState("");
 
@@ -46,6 +46,7 @@ const NavTopDashboard = () => {
                 Logout
               </NavLink>
             </button>
+            <TopupModal />
           </li>
         </ul>
       </div>

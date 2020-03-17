@@ -223,6 +223,21 @@ h5 {
   position: absolute;
   right: 32px;
 }
+#topup-button {
+  background-color: #21ce99;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: none;
+  height: 34px;
+  color: white;
+  font-weight: bold;
+  font-family: "DIN Web", sans-serif;
+  height: 42px;
+  width: 100px;
+  padding: 10px;
+  position: absolute;
+  right: 142px;
+}
 #logout-btn a {
   color: white;
 }
@@ -329,7 +344,14 @@ h5 {
   opacity: 0.5;
   font-family: "DIN Web", sans-serif;
 }
-
+#account {
+  width: 500px;
+  height: 38px;
+}
+#account:focus {
+  border-color: #21ce99;
+  box-shadow: none;
+}
 #sender {
   width: 1000px;
   height: 38px;
@@ -475,10 +497,14 @@ h5 {
   display: inline-block;
   padding: 5px;
 }
+.inline-loading {
+  display: inline-block;
+  // padding: 5px;
+}
 
 #nav-inline-balance {
   display: inline-block;
-  padding-right: 160px;
+  padding-right: 260px;
   margin-top: 11px;
   font-weight: bold;
   font-family: "DIN Web", sans-serif;
@@ -543,7 +569,17 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-animation: 1s spin linear infinite;
   animation: 1s spin linear infinite;
 }
-
+#nb-spinner-button {
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  background: transparent;
+  border-top: 4px solid #21ce99;
+  border-right: 4px solid transparent;
+  border-radius: 50%;
+  -webkit-animation: 1s spin linear infinite;
+  animation: 1s spin linear infinite;
+}
 #spinner-modal {
   flex-direction: column;
   margin-bottom: 60px;
@@ -551,6 +587,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin-left: 200px;
   margin-right: 100px;
 }
+
 #response-modal {
   flex-direction: column;
   margin-bottom: 60px;
@@ -565,6 +602,7 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 14px;
   font-family: "DIN Web", sans-serif;
 }
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -583,6 +621,9 @@ input[type="number"]::-webkit-inner-spin-button {
 
   #sender {
     width: 730px;
+  }
+  #account {
+    width: 500px;
   }
   #message {
     width: 730px;
@@ -639,6 +680,9 @@ input[type="number"]::-webkit-inner-spin-button {
   #sender {
     width: 540px;
   }
+  #account {
+    width: 500px;
+  }
   #message {
     width: 540px;
   }
@@ -679,6 +723,7 @@ input[type="number"]::-webkit-inner-spin-button {
   #sender {
     width: 540px;
   }
+
   #message {
     width: 540px;
   }
@@ -736,6 +781,9 @@ input[type="number"]::-webkit-inner-spin-button {
   #sender {
     width: 520px;
   }
+  #account {
+    width: 260px;
+  }
   #message {
     width: 520px;
   }
@@ -785,6 +833,9 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 38px;
   }
   #sender {
+    width: 300px;
+  }
+  #account {
     width: 300px;
   }
   #message {
@@ -838,6 +889,9 @@ input[type="number"]::-webkit-inner-spin-button {
   #sender {
     width: 260px;
   }
+  #account {
+    width: 260px;
+  }
   #message {
     width: 260px;
   }
@@ -889,6 +943,9 @@ input[type="number"]::-webkit-inner-spin-button {
   #sender {
     width: 240px;
   }
+  #account {
+    width: 240px;
+  }
   #message {
     width: 240px;
   }
@@ -931,6 +988,9 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 210px;
   }
   #sender {
+    width: 200px;
+  }
+  #account {
     width: 200px;
   }
   #message {
