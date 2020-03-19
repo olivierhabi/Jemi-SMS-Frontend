@@ -8,7 +8,7 @@ import API from "./Api";
 const LoginForm = () => {
   const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [status, setStatus] = useState("");
+  const [, setStatus] = useState("");
   const [message, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
   const history = useHistory();

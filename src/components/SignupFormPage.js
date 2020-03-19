@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import API from "./Api";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,7 +13,6 @@ const SignupForm = props => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
-  const history = useHistory();
 
   const singUp = e => {
     e.preventDefault();

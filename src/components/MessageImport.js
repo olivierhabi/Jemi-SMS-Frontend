@@ -6,7 +6,7 @@ import {
   faFileImport,
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
-import MessageOnePage from "./MessageOnePage";
+import { NavLink } from "react-router-dom";
 
 const MessagePage = () => {
   const [state, setState] = useState({
@@ -15,9 +15,12 @@ const MessagePage = () => {
   const [message, setMessage] = useState("");
   const [sender, setSender] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const sendMessage = async e => {
     e.preventDefault();
+    setLoader(true);
+    setStatusMessage("");
 
     const token = localStorage.getItem("auth-token");
     const options = {
@@ -26,45 +29,42 @@ const MessagePage = () => {
     const data = state.jsonResult;
     if (data === null) {
       setStatusMessage("Please Import your contact file");
-      console.log(statusMessage);
+      setLoader(false);
       return;
     }
+    const allMessage = message.match(/[\s\S]{1,160}/g) || [];
 
     for (var i = 0; i < data.length; i++) {
-      const phone = data[0].phone;
+      const phone = data[i];
 
-      await API.post(
-        "/message",
-        {
-          message: message,
-          sender: sender,
-          phone: phone
-        },
-        options
-      ).then(
-        response => {
-          setStatusMessage("Message sent");
-          setMessage("");
-          setSender("");
-          setState("");
-        },
-        error => {
-          console.log(error);
-          // const { status, message } = error.response.data;
-          // setStatus(status);
-          // setMessage(message);
-        }
-      );
+      for (var a = 0; a < allMessage.length; a++) {
+        const message = allMessage[a];
+        console.log(phone.phone);
 
-      // console.log([
-      //   {
-      //     phone,
-      //     sender,
-      //     message
-      //   }
-      // ]);
+        await API.post(
+          "/message",
+          {
+            message: message,
+            sender: sender,
+            phone: phone.phone
+          },
+          options
+        ).then(
+          response => {
+            setStatusMessage("Message sent");
+            console.log(response);
+            setLoader(false);
+            setMessage("");
+            setSender("");
+          },
+          error => {
+            const { message } = error.response.data;
+            setStatusMessage(message);
+            setLoader(false);
+          }
+        );
+      }
     }
-    console.log(statusMessage);
   };
   const Error = () => {
     if (!statusMessage) {
@@ -80,15 +80,36 @@ const MessagePage = () => {
     );
   };
 
+  const SpinLoader = () => {
+    if (!loader) {
+      return null;
+    } else if (loader) {
+      return (
+        <div>
+          <div id="nb-spinner-button"></div>
+        </div>
+      );
+    }
+  };
+  console.log(statusMessage);
   return (
     <main class="content">
       <div class="container-fluid p-0">
         <h1 id="header-h1" class="h3 mb-3">
-          Messages
+          Import CSV
         </h1>
         <div id="message-row">
           <div class="card">
-            <MessageOnePage />
+            <NavLink to="/message" activeClassName="is-active" exact={true}>
+              <button
+                align="left"
+                id="one-message-btn"
+                class="btn btn-outline-light"
+                type="submit"
+              >
+                Back
+              </button>
+            </NavLink>
 
             <div id="signup-form">
               <div class="media">
@@ -176,10 +197,15 @@ const MessagePage = () => {
                       placeholder="Your Message"
                       onChange={e => setMessage(e.target.value)}
                     />
+                    <br />
+                    <p id="message-length">
+                      {message.length} Characters of message{" "}
+                      {Math.ceil(message.length / 160)}
+                    </p>
                   </div>
-                  <br />
-                  <Error />
                 </div>
+                <Error />
+                <SpinLoader />
                 <button
                   id="signup-btn"
                   class="btn btn-outline-light"

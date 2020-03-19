@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import API from "./Api";
 import Modal from "react-bootstrap/Modal";
-import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faExclamationCircle,
@@ -12,7 +11,7 @@ import "../style/styles.scss";
 
 const SignupForm = props => {
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [, setMessage] = useState("");
   const [quantity, setQuantiy] = useState("");
   const [amount, setAmount] = useState("");
   const [tax, setTax] = useState();
@@ -21,7 +20,6 @@ const SignupForm = props => {
   const [response, setResponse] = useState(false);
   const [respData, setRespData] = useState("");
   const [status, setStatus] = useState("");
-  const history = useHistory();
 
   const [show, setShow] = useState(false);
 

@@ -5,7 +5,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [data, setData] = useState([]);
-  const [message, setMessage] = useState("");
+  const [, setMessage] = useState("");
 
   const deleteContact = async id => {
     await API.delete(`/contact/${id}`, options)
