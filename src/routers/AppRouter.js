@@ -16,6 +16,7 @@ import NavSidebar from "../components/NavSidebar";
 import NavTopDashboard from "../components/NavTopDashboard";
 import SchedulePage from "../components/SchedulePage";
 import AccountPage from "../components/AccountPage";
+import MessageImport from "../components/MessageImport";
 
 const AppRouter = () => {
   return (
@@ -42,6 +43,7 @@ const AppRouter = () => {
                     <Route path="/history" component={HistoryPage} />
                     <Route path="/schedule" component={SchedulePage} />
                     <Route path="/account" component={AccountPage} />
+                    <Route path="/import" component={MessageImport} />
                   </Authenticated>
                 </main>
                 <FooterPage />

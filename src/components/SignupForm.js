@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import API from "./Api";
 import Modal from "react-bootstrap/Modal";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import ModalLogin from "./ModalLogin";
 import "../style/styles.scss";
 
 const SignupForm = props => {
@@ -15,7 +13,6 @@ const SignupForm = props => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
-  const history = useHistory();
 
   const [show, setShow] = useState(false);
 

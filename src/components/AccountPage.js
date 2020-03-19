@@ -3,7 +3,7 @@ import API from "./Api";
 import EditAccountModal from "./EditAccountModal";
 
 const AccountPage = () => {
-  const [data, setData] = useState([]);
+  const [, setData] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");

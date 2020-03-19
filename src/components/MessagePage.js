@@ -3,7 +3,7 @@ import { findPhoneNumbersInText } from "libphonenumber-js";
 import API from "./Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import MessageOnePage from "./MessageOnePage";
+import { NavLink } from "react-router-dom";
 
 const MessagePage = () => {
   const [message, setMessage] = useState("");
@@ -96,7 +96,16 @@ const MessagePage = () => {
         </h1>
         <div id="message-row">
           <div class="card">
-            <MessageOnePage />
+            <NavLink to="/import" activeClassName="is-active" exact={true}>
+              <button
+                align="left"
+                id="one-message-btn"
+                class="btn btn-outline-light"
+                type="submit"
+              >
+                Import
+              </button>
+            </NavLink>
 
             <div id="signup-form">
               <form class="needs-validation" onSubmit={sendMessage}>

@@ -8,9 +8,9 @@ import {
   faIdCardAlt,
   faUser,
   faHistory,
-  faCalendarCheck
+  faCalendarCheck,
+  faFileImport
 } from "@fortawesome/free-solid-svg-icons";
-import Modal from "./TopupModal";
 
 const NavSidebar = () => (
   <nav id="sidebar" class="sidebar">
@@ -34,6 +34,20 @@ const NavSidebar = () => (
               exact={true}
             >
               <FontAwesomeIcon id="favicon" icon={faEnvelope} />+ Messages
+            </NavLink>
+          </span>
+        </li>
+        <li class="sidebar-item active">
+          <span class="align-middle">
+            <NavLink
+              id="active-hover"
+              to="/import"
+              activeClassName="is-active"
+              className="sidebar-link"
+              exact={true}
+            >
+              <FontAwesomeIcon id="favicon" icon={faFileImport} />
+              Import
             </NavLink>
           </span>
         </li>

@@ -9,7 +9,7 @@ import {
 
 function AllMessagePage() {
   const [data, setData] = useState([]);
-  const [message, setMessage] = useState("");
+  const [, setMessage] = useState("");
 
   const token = localStorage.getItem("auth-token");
   const options = {
@@ -75,10 +75,6 @@ function AllMessagePage() {
         fetchData();
       })
       .catch(err => console.log(err));
-  };
-
-  const refreshPage = () => {
-    window.location.reload();
   };
 
   return (

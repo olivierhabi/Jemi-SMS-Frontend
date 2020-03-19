@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import API from "./Api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-
 import "../style/classic.scss";
 
 const HistoryPage = () => {
   const [data, setData] = useState([]);
-  const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("auth-token");
   const options = {
